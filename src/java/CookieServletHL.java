@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pak1.Pom;
 
-/*
- * To change this template, choose Tools | Templates and open the template in
- * the editor.
- */
+
 /**
  * Použití cookies pro počítání přístupů daného klienta na webový server.
  *
