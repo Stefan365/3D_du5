@@ -6,6 +6,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import pak1.Pom;
 
 /*
  * To change this template, choose Tools | Templates and open the template in
@@ -25,38 +26,30 @@ public class CookieServletHL extends HttpServlet {
 
         //přečtení parametru od klienta. zakladne nastavenie, pokial nebude ine z cookies, resp. formulara
         String font_col = "BLACK", back_col = "WHITE", font_size = "8";
+        Pom pom = new Pom();
 
         if (request.getParameter("fc") == null //pokial formular nebol vyplneny: ...
             & request.getParameter("fc") == null
             & request.getParameter("fc") == null) {
-            
+
             //...je tu stale este moznost, ze su k dispozicii cookies:
             Cookie[] mySiteCookies = request.getCookies();
 
             if (mySiteCookies != null) {
-                for (int i = 0; i < mySiteCookies.length; i++) {
-                    Cookie c = mySiteCookies[i];
-                    if (c.getName().equals("font_color")) {
-                        font_col = c.getValue().equals("") ? font_col : c.getValue();
-                        response.addCookie(c);
-                        //break;
-                    } else if (c.getName().equals("background_color")) {
-                        back_col = c.getValue().equals("") ? back_col : c.getValue();
-                        response.addCookie(c);
-                        //break;
-                    } else if (c.getName().equals("font_size")) {
-                        font_size = c.getValue().equals("") ? font_size : c.getValue();                                              response.addCookie(c);
-                        //break;
-                    }
-                }
+                pom.spracujCookies(mySiteCookies, response);
+
+                font_col = pom.font_col;
+                back_col = pom.back_col;
+                font_size = pom.font_size;
+
             }
+
         } else {
             //dopln hodnoty z formulara:
             font_col = request.getParameter("fc");
             back_col = request.getParameter("bc");
             font_size = request.getParameter("fs");
 
-            //Cookie[] cookies = request.getCookies();
             Cookie c = new Cookie("font_color", font_col);
             response.addCookie(c);
             c = new Cookie("background_color", back_col);
@@ -123,8 +116,11 @@ public class CookieServletHL extends HttpServlet {
             + "            </p>\n"
             + "        </form>\n"
             + "        <p>\n"
-            + "            <a href=\"http://localhost:8080/DU5/cookie1\">str1</a>\n"
-            + "            <a href=\"http://localhost:8080/DU5/cookie2\">str2</a>\n"
+            //nasledovne 2 riadky tu mam miesto komentara.
+            //+ "            <a href=\"http://localhost:8080/DU5/cookie1\">str1</a>\n"
+            //+ "            <a href=\"http://localhost:8080/DU5/cookie2\">str2</a>\n"
+            + "            <a href=\"/DU5/cookie1\">str1</a>\n"
+            + "            <a href=\"/DU5/cookie2\">str2</a>\n"
             + "        </p>\n"
             + "        <font size=\"" + font_size + "\" color=\"" + font_col + "\">"
             + "        <p>\n"

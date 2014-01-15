@@ -6,11 +6,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-/*
- * To change this template, choose Tools | Templates and open the template in
- * the editor.
- */
+import pak1.Pom;
 
 /**
  * Použití cookies pro počítání přístupů daného klienta na webový server.
@@ -25,27 +21,17 @@ public class CookieServlet1 extends HttpServlet {
         HttpServletResponse response) throws ServletException,
         IOException {
 
-        String font_col = "BLACK", back_col = "WHITE", font_size = "8";
+        String font_col, back_col, font_size;
+        Pom pom = new Pom();
         
-		
         //nacitanie vlastnosti z cookies:
         Cookie[] mySiteCookies = request.getCookies();
-		for (int i=0; i<mySiteCookies.length; i++) {
-			Cookie c = mySiteCookies[i];
-			if (c.getName().equals("font_color")) {
-				font_col = c.getValue();
-                response.addCookie(c);
-				//break;
-			} else if (c.getName().equals("background_color")) {
-				back_col = c.getValue();
-                response.addCookie(c);
-				//break;
-			} else if (c.getName().equals("font_size")) {
-				font_size = c.getValue();
-                response.addCookie(c);				
-                //break;
-			} 
-		}
+        pom.spracujCookies(mySiteCookies, response);
+        
+        font_col = pom.font_col;
+        back_col = pom.back_col;
+        font_size = pom.font_size;
+		
         
         // příprava odpovědi pro klienta
         response.setContentType("text/html");
@@ -65,7 +51,10 @@ public class CookieServlet1 extends HttpServlet {
                     
         //odakz na stranku zpet:
         out.println("</font>");
-        out.println("<a href=\"http://localhost:8080/DU5/\">ZPĚT</a>");
+        
+        //nasledovny riadok tu mam miesto komentara:
+        //out.println("<a href=\"http://localhost:8080/DU5/\">ZPĚT</a>");
+        out.println("<a href=\"/DU5/\">ZPĚT</a>");
         out.println("</body>");
         out.println("</html>");
     }
