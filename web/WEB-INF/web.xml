@@ -12,30 +12,17 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
         <!-- Nastavení jména servletu a cesty k java-tøídì s implementovaným
         servletem. -->
         <servlet-name>cookie1</servlet-name>
-        <servlet-class>
-            <!-- Plná cesta ke tøídì servletu. -->
-            CookieServlet1
-        </servlet-class>
+        <servlet-class>CookieServlet1</servlet-class>
     </servlet>
 
     <servlet>
-        <!-- Nastavení jména servletu a cesty k java-tøídì s implementovaným
-        servletem. -->
         <servlet-name>cookie2</servlet-name>
-        <servlet-class>
-            <!-- Plná cesta ke tøídì servletu. -->
-            CookieServlet2
-        </servlet-class>
+        <servlet-class>CookieServlet2</servlet-class>
     </servlet>
 
     <servlet>
-        <!-- Nastavení jména servletu a cesty k java-tøídì s implementovaným
-        servletem. -->
         <servlet-name>cookie</servlet-name>
-        <servlet-class>
-            <!-- Plná cesta ke tøídì servletu. -->
-            CookieServletHL
-        </servlet-class>
+        <servlet-class>CookieServletHL</servlet-class>
     </servlet>
 	
     <servlet-mapping>

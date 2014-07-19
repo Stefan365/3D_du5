@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author User
+ * @author Stefan Veres
  */
 public class Pom {
 

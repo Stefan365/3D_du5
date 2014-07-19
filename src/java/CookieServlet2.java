@@ -11,7 +11,7 @@ import pak1.Pom;
 /**
  * Použití cookies pro počítání přístupů daného klienta na webový server.
  *
- * @author Jaroslav Srp
+ * @author Stefan Veres
  */
 public class CookieServlet2 extends HttpServlet {
 
